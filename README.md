@@ -3,4 +3,4 @@ chrome-extension-huaci
 
 chrome的划词翻译插件
 
-将金山词霸的划词功能整合到一个chrome插件上
+将[爱词霸](http://www.iciba.com/ "爱词霸")的页面划词功能整合到一个chrome插件上
