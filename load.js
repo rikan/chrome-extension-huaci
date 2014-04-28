@@ -1,7 +1,30 @@
+var displayedDivID = 'Jihuajiyi';
 var divTag = document.createElement('div');
-divTag.setAttribute('id','Jihuajiyi');
-divTag.setAttribute('style','float:right');
+divTag.setAttribute('id',displayedDivID);
+divTag.setAttribute('style','position: absolute; bottom: 0; right: 0;');
 document.body.appendChild(divTag);
+
+divTag.addEventListener('mousedown', mouseDown, false);
+window.addEventListener('mouseup', mouseUp, false);
+
+function mouseUp()
+{
+    window.removeEventListener('mousemove', divMove, true);
+}
+
+function mouseDown(e){
+  var div = document.getElementById(displayedDivID);
+  offY= e.clientY-parseInt(div.offsetTop);
+  offX= e.clientX-parseInt(div.offsetLeft);
+  window.addEventListener('mousemove', divMove, true);
+}
+
+function divMove(e){
+  var div = document.getElementById(displayedDivID);
+  div.style.position = 'absolute';
+  div.style.top = (e.clientY-offY) + 'px';
+  div.style.left = (e.clientX-offX) + 'px';
+}
 
 var iciba_huaci_url ="http://open.iciba.com/huaci/";
 var ICIBA_HUAYI_Str = '';
@@ -393,7 +416,7 @@ function asstop_hanci(){
 }
 /*开始关闭即划即译功能*/
 function ICIBA_HUAYI_kg(){
-	var iKg=document.getElementById("Jihuajiyi");
+	var iKg=document.getElementById(displayedDivID);
 	var COOKIE =  getCookie(ICIBA_HUAYI_COOKIE);
 	if(COOKIE == undefined)
 	{
